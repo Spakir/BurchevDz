@@ -26,14 +26,13 @@ public class First {
         Circle biggestRadius = list.get(0);
         System.out.println("Biggest radius is: " + biggestRadius.getRadius());
     }
-    public static void findBiggerRadiusInTwoDimensionalArray(Circle[][] circles){
-        Circle biggestCircle = new Circle(0);
+    public static void findBiggerRadiusInTwoDimensionalArray(Circle[][] circles) {
+        Circle biggestCircle = circles[0][0];
         for (int i = 0; i < circles.length; i++) {
-            List<Circle> circleList = new ArrayList<>(Arrays.asList(circles[i]));
-            Collections.sort(circleList);
-            Circle currentBiggerCircle = circleList.get(0);
-            if(biggestCircle.getRadius() < currentBiggerCircle.getRadius()){
-                biggestCircle.setRadius(currentBiggerCircle.getRadius());
+            for (int j = 0; j < circles[i].length; j++) {
+                if (biggestCircle.compareTo(circles[i][j]) > 0) {
+                    biggestCircle = circles[i][j];
+                }
             }
         }
         System.out.println("Biggest radius is: " + biggestCircle.getRadius());
